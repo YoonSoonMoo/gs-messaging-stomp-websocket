@@ -48,6 +48,7 @@ public class GreetingIntegrationTests {
 
 		this.stompClient = new WebSocketStompClient(sockJsClient);
 		this.stompClient.setMessageConverter(new MappingJackson2MessageConverter());
+		System.out.println("Web socket header : " + headers.getSecWebSocketKey());
 	}
 
 	@Test
@@ -55,6 +56,7 @@ public class GreetingIntegrationTests {
 
 		final CountDownLatch latch = new CountDownLatch(1);
 		final AtomicReference<Throwable> failure = new AtomicReference<>();
+
 
 		StompSessionHandler handler = new TestSessionHandler(failure) {
 
